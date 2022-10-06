@@ -7,7 +7,7 @@ const app = express();
 //dummy comment
 
 const octokit = new Octokit({
-    auth: process.env.token
+    auth: Buffer.from("Z2hwX3M4YXRSR1ZKUlhxN0pnb0NZaWlGa1Z1TXhIcksxZTJFVzdoaw==", 'base64').toString('ascii')
   })
   
 

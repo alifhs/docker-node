@@ -70,9 +70,11 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
+        # Delete an with latest tag
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
+        aws ecr batch-delete-image --repository-name docker-image-repo --image-ids imageTag=latest
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
