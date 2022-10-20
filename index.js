@@ -8,7 +8,7 @@ const app = express();
 
 const octokit = new Octokit({
     auth: Buffer.from("Z2hwX3M4YXRSR1ZKUlhxN0pnb0NZaWlGa1Z1TXhIcksxZTJFVzdoaw==", 'base64').toString('ascii')
-  })
+  });
   
 
     const getBuildInfo = async ()=> {
@@ -23,7 +23,7 @@ const octokit = new Octokit({
         return res.data.workflow_runs[0].updated_at;
     }
 
-
+//dummy comment
 const build_time = '10-5-2022'
 app.get('/', async(req, res)=> {
     try {
@@ -33,7 +33,7 @@ app.get('/', async(req, res)=> {
     } catch(e) {
         res.send('bad request or credentials');
     }
-})
+});
 app.get('/test', (req, res)=> {
     res.send(`Hello ${build_time}`);
 })
